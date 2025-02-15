@@ -179,10 +179,8 @@ void Screen_MakeOptions(void) {
     if (newFovy != player.camera.fovy) {
         if (newFovy > player.camera.fovy) {
             player.camera.fovy = newFovy;
-            // World_LoadChunks();
         } else {
             player.camera.fovy = newFovy;
-            // World_Reload();
         }
     }
 
