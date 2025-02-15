@@ -19,13 +19,14 @@ Midless is a free and open-source voxel game made in C.
 
 | Dependency    | Version | Type      | Used By|
 |---------------|---------|-----------|--------|
-| [Raylib](https://github.com/raysan5/raylib/)        | 4.5     | Single-File | Client / Server
-| [Zpl-c/ENet](https://github.com/zpl-c/enet)    | 2.3.6   | Single-File | Client / Server
+| [Raylib](https://github.com/raysan5/raylib/)        | [4.5](https://github.com/raysan5/raylib/releases/tag/4.5.0)     | Single-File | Client / Server
+| [Raygui](https://github.com/raysan5/raygui/)        | [3.5](https://github.com/raysan5/raygui/releases/tag/3.5)     | Single-File | Client
+| [Zpl-c/ENet](https://github.com/zpl-c/enet)    | [2.3.6](https://github.com/zpl-c/enet/releases/tag/v2.3.6)   | Single-File | Client / Server
 | [FastNoiseLite](https://github.com/Auburn/FastNoiseLite) | -       | Single-File | Client / Server
 | [stb_ds](https://github.com/nothings/stb/blob/master/stb_ds.h) | -       | Single-File | Client / Server
 | [MiniLua](https://github.com/edubart/minilua) | -       | Single-File | Server
 | For Optional Server's Websocket Support:
-| [mongoose](https://github.com/cesanta/mongoose/) | 7.8       | Single-Files (.c, .h) | Server
+| [mongoose](https://github.com/cesanta/mongoose/) | [7.8](https://github.com/cesanta/mongoose/releases/tag/7.8)       | Single-Files (.c, .h) | Server
 | [OpenSSL](https://github.com/openssl/openssl) | -       | Linked | Server
 
 
