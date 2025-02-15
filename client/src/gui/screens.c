@@ -167,14 +167,32 @@ void Screen_MakeOptions(void) {
 
     int offsetY = screenHeight / 2 - 75;
     int offsetX = screenWidth / 2 - 100;
+    
+    const char* fovTxt = TextFormat("Field of View: %i", (int)player.camera.fovy);
+
+    //Field of view Button
+    float newFovy = GuiSlider((Rectangle) {offsetX, offsetY, 200, 30 }, "", "", player.camera.fovy, 30.0f, 110.0f);
+    Vector2 fovTxtSize = MeasureTextEx(GetFontDefault(), fovTxt, 10.0f, 1);
+    DrawTextEx(GetFontDefault(), fovTxt, (Vector2){offsetX + 100 - fovTxtSize.x / 2 + 1, offsetY + 15 - fovTxtSize.y / 2 + 1}, 10.0f, 1, BLACK);
+    DrawTextEx(GetFontDefault(), fovTxt, (Vector2){offsetX + 100 - fovTxtSize.x / 2, offsetY + 15 - fovTxtSize.y / 2}, 10.0f, 1, WHITE);
+
+    if (newFovy != player.camera.fovy) {
+        if (newFovy > player.camera.fovy) {
+            player.camera.fovy = newFovy;
+        } else {
+            player.camera.fovy = newFovy;
+        }
+    }
+
+    offsetY += 35;
 
     const char* drawDistanceTxt = TextFormat("Draw Distance: %i", world.drawDistance);
 
     //Draw distance Button
     int newDrawDistance = GuiSlider((Rectangle) {offsetX, offsetY, 200, 30 }, "", "", world.drawDistance, 2, 16);
-    Vector2 sizeText = MeasureTextEx(GetFontDefault(), drawDistanceTxt, 10.0f, 1);
-    DrawTextEx(GetFontDefault(), drawDistanceTxt, (Vector2){offsetX + 100 - sizeText.x / 2 + 1, offsetY + 15 - sizeText.y / 2 + 1}, 10.0f, 1, BLACK);
-    DrawTextEx(GetFontDefault(), drawDistanceTxt, (Vector2){offsetX + 100 - sizeText.x / 2, offsetY + 15 - sizeText.y / 2}, 10.0f, 1, WHITE);
+    Vector2 drawDistanceTxtSize = MeasureTextEx(GetFontDefault(), drawDistanceTxt, 10.0f, 1);
+    DrawTextEx(GetFontDefault(), drawDistanceTxt, (Vector2){offsetX + 100 - drawDistanceTxtSize.x / 2 + 1, offsetY + 15 - drawDistanceTxtSize.y / 2 + 1}, 10.0f, 1, BLACK);
+    DrawTextEx(GetFontDefault(), drawDistanceTxt, (Vector2){offsetX + 100 - drawDistanceTxtSize.x / 2, offsetY + 15 - drawDistanceTxtSize.y / 2}, 10.0f, 1, WHITE);
 
     if (newDrawDistance != world.drawDistance) {
         if (newDrawDistance > world.drawDistance) {
