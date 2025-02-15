@@ -1,5 +1,5 @@
 RAYLIB_PATH = C:/raylib/raylib
-COMPILER_PATH ?= C:/mingw64/bin
+COMPILER_PATH ?= C:/raylib/w64devkit/bin
 
 # PLATFORM_WEB properties
 BUILD_WEB_SHELL       ?= shell.html
