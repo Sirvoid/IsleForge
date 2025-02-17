@@ -77,6 +77,7 @@ void Screen_MakeGame(void) {
     if (Screen_showDebug) {
         const char* coordText = TextFormat("X: %i Y: %i Z: %i", (int)player.position.x, (int)player.position.y, (int)player.position.z);
         const char* debugText;
+        const char* flightText = "Flight ON";
 
         if (Network_connectedToServer) {
             debugText = TextFormat("%2i FPS %2i PING", GetFPS(), Network_ping);
@@ -92,6 +93,10 @@ void Screen_MakeGame(void) {
         DrawText(coordText, 9, 49, 20, BLACK);
         DrawText(debugText, 8, 28, 20, WHITE);
         DrawText(coordText, 8, 48, 20, WHITE);
+        if (player.canFly) {
+            DrawText(flightText, 9, 69, 20, BLACK);
+            DrawText(flightText, 8, 68, 20, WHITE);
+        }
     }
 
     //Draw crosshair
