@@ -21,6 +21,7 @@ typedef struct Player{
     RaycastResult rayResult;
     int blockSelected;
     bool canJump;
+    bool canFly;
 } Player;
 extern Player player;
 

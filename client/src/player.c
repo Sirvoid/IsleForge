@@ -114,11 +114,27 @@ void Player_CheckInputs() {
     
     if (!Screen_cursorEnabled) {
         //Handle keys & mouse
-        if (IsKeyDown(KEY_SPACE) && player.canJump) {
-            player.velocity.y += 0.2f;
-            player.canJump = false;
+        switch(player.canFly) {
+        case true:
+            if (IsKeyDown(KEY_SPACE)) {
+                player.velocity.y += 0.2f;
+                player.velocity.y = Clamp(player.velocity.y, 0.0f, 0.2f);
+            } else if (IsKeyDown(KEY_LEFT_SHIFT) || IsKeyDown(KEY_RIGHT_SHIFT)) {
+                player.velocity.y -= 0.2f;
+                player.velocity.y = Clamp(player.velocity.y, 0.0f, -0.2f);
+            } else {
+                player.velocity.y = 0.0f;
+            }
+        case false:
+            if (IsKeyDown(KEY_SPACE) && player.canJump) {
+                player.velocity.y += 0.2f;
+                player.canJump = false;
+            }
         }
         Vector3 moveDir = { 0 };
+
+        if (IsKeyPressed(KEY_F))
+            player.canFly = !player.canFly;
         
         if (IsKeyDown(KEY_W)) {
             moveDir.z += sx;
@@ -227,8 +243,10 @@ void Player_Update(void) {
     }
 
     //Gravity
-    player.velocity.y -= 0.012f * (GetFrameTime() * 60);
-    if (player.velocity.y <= -1) player.velocity.y = -1;
+    if (!player.canFly) {
+        player.velocity.y -= 0.012f * (GetFrameTime() * 60);
+        if (player.velocity.y <= -1) player.velocity.y = -1;
+    }
     
     //Calculate velocity with delta time
     Vector3 velXdt = Vector3Scale(player.velocity, GetFrameTime() * 60);
