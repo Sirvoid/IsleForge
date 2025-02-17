@@ -9,6 +9,7 @@ Midless is a free and open-source voxel game made in C.
 |-------------------------------|----------------------|
 | W A S D             | Move                           |
 | Space               | Jump                           |
+| F                   | Toggle Flight                  |
 | Left Click          | Break block                    |
 | Right Click         | Place block                    |
 | Mouse wheel         | Block Selection                |
