@@ -7,3 +7,4 @@ libs/*.h
 libs/*.a
 *.html
 *.bat
+world/seed.dat
